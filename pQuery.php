@@ -80,6 +80,7 @@ class pQuery implements ArrayAccess, IteratorAggregate, IQuery {
      *
      * @return int Returns the count of matched elements.
      */
+    #[\ReturnTypeWillChange]
     public function count() {
         return count($this->nodes);
     }
@@ -96,6 +97,7 @@ class pQuery implements ArrayAccess, IteratorAggregate, IQuery {
 //        return $formatter->format($dom);
 //    }
 
+    #[\ReturnTypeWillChange]
     public function getIterator() {
         return new ArrayIterator($this->nodes);
     }
@@ -123,14 +125,17 @@ class pQuery implements ArrayAccess, IteratorAggregate, IQuery {
         return $this;
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset) {
         return isset($this->nodes[$offset]);
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset) {
         return isset($this->nodes[$offset]) ? $this->nodes[$offset] : null;
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value) {
 
         if (is_null($offset) || !isset($this->nodes[$offset])) {
@@ -140,6 +145,7 @@ class pQuery implements ArrayAccess, IteratorAggregate, IQuery {
         }
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset) {
         if (isset($this->nodes[$offset])) {
             $this->nodes[$offset]->remove();

@@ -919,7 +919,7 @@ class DomNode implements IQuery {
 	 * @return bool
 	 */
 	function hasChild($child) {
-		return ((bool) findChild($child));
+		return ((bool) $this->findChild($child));
 	}
 
 	/**
@@ -2352,6 +2352,7 @@ class DomNode implements IQuery {
       return $this;
    }
 
+   #[\ReturnTypeWillChange]
    public function count() {
        return 1;
    }
